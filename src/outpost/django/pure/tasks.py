@@ -45,7 +45,11 @@ class XMLBuilder:
         }
         root = Element("persons", nsmap=nsmap)
         for person in models.Person.objects.all():
-            root.append(self._generate_person_element(nsmap, person.person, person.academic, person.pure_user))
+            root.append(
+                self._generate_person_element(
+                    nsmap, person.person, person.academic, person.pure_user
+                )
+            )
         return self._to_string(root)
 
     def _generate_user_element(self, nsmap, user) -> _Element:
@@ -71,7 +75,7 @@ class XMLBuilder:
 
         root.append(self._text_element("gender", "unknown"))
 
-        if (url:= self._get_avatar(person)) and person.avatar_display_rule == "A":
+        if (url := self._get_avatar(person)) and person.avatar_display_rule == "A":
             root.append(self._photo_element(url))
 
         orgs_element = Element("organisationAssociations")
@@ -116,7 +120,12 @@ class XMLBuilder:
         if not person.avatar_private:
             return None
         path = reverse("campusonline:avatar-private", kwargs={"hash": person.hash})
-        return path
+
+        instance = settings.INSTANCE
+        if not instance.startswith(("http://", "https://")):
+            instance = f"https://{instance}"
+
+        return instance + path
 
     def _photo_element(self, avatar_url: str) -> _Element:
         root = Element("photos")
