@@ -228,7 +228,7 @@ class XMLBuilder:
 
 
 class XMLTasks:
-    @shared_task(bind=True, ignore_result=True, name=f"{__name__}.generate")
+    @shared_task(bind=True, ignore_result=True, name=f"{__name__}.XML:generate")
     def generate(task):
         builder = XMLBuilder()
 
