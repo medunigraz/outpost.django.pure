@@ -1,12 +1,6 @@
 import logging
 
 from django.contrib.gis.db import models
-from django.contrib.postgres.fields import (
-    ArrayField,
-    HStoreField,
-)
-
-from .conf import settings
 
 logger = logging.getLogger(__name__)
 
