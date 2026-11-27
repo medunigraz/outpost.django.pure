@@ -10,7 +10,6 @@ class Migration(migrations.Migration):
     dependencies = []
 
     operations = [
-
         migrations.RunSQL(
             sql="""
                 CREATE SCHEMA IF NOT EXISTS pure
@@ -140,7 +139,7 @@ class Migration(migrations.Migration):
                         "managed": False,
                     },
                 ),
-            ],            
+            ],
         ),
         migrations.SeparateDatabaseAndState(
             database_operations=[

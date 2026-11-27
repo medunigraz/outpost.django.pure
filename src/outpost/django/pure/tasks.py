@@ -1,4 +1,3 @@
-from functools import lru_cache
 import logging
 from typing import Final
 
@@ -228,7 +227,7 @@ class XMLBuilder:
 
 
 class XMLTasks:
-    @shared_task(bind=True, ignore_result=True, name=f"{__name__}.XML:generate")
+    @shared_task(bind=True, ignore_result=True, name=f"{__name__}.generate")
     def generate(task):
         builder = XMLBuilder()
 

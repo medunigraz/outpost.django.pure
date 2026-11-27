@@ -3,10 +3,10 @@ name = "outpost.django.pure"
 dynamic = ["version"]
 description = "MUG API Backend - PURE"
 authors = [
-    {name = "Michael Fladischer", email = "michael.fladischer@medunigraz.at"}
+    {name = "Lukas Klavzer", email = "lukas.klavzer@medunigraz.at"}
 ]
 license = {text = "BSD"}
-readme = "README.rst"
+readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "django (>=4.2.23)",
